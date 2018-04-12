@@ -6,17 +6,17 @@
         "repositoryURL": "https://github.com/IBM-Swift/BlueSocket.git",
         "state": {
           "branch": null,
-          "revision": "49b2e913573e0d7cbcc978590b9b247bf94e3d04",
-          "version": "1.0.2"
+          "revision": "6e19b6161cf38829effc3c234f4cc3e13c815d9a",
+          "version": "1.0.3"
         }
       },
       {
         "package": "PanasonicEasyIPsetupCore",
-        "repositoryURL": "/Users/damiaan/Documents/Projecten/PanasonicEasyIPsetupCore",
+        "repositoryURL": "https://github.com/dPro-Software/PanasonicEasyIPsetupCore",
         "state": {
-          "branch": "master",
-          "revision": "f44be08b96360e21f53e00a8164b9969b1b7cf9a",
-          "version": null
+          "branch": null,
+          "revision": "7a1ec4206d89ec273e22725e7713cd922e902aa9",
+          "version": "1.0.0"
         }
       },
       {

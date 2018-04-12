@@ -14,7 +14,7 @@ let package = Package(
     dependencies: [
 		.package(url: "https://github.com/IBM-Swift/BlueSocket.git", from: "1.0.2"),
 		.package(url: "https://github.com/svdo/swift-netutils", from: "4.0.2"),
-		.package(url: "../PanasonicEasyIPsetupCore", .branch("master"))
+		.package(url: "https://github.com/dPro-Software/PanasonicEasyIPsetupCore", from: ("1.0.0"))
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
