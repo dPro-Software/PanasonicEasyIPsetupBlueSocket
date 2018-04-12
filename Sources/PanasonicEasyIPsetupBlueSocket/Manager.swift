@@ -66,7 +66,9 @@ public class Manager {
 				var data = Data()
 				_ = try socket.listen(forMessage: &data, on: 10669)
 				let datagram = Array(data)
-				notify(configuration: try CameraConfiguration(datagram: datagram))
+				if datagram[0..<4] == [0,1,1,0x75] {
+					notify(configuration: try CameraConfiguration(datagram: datagram))
+				}
 			} catch {
 				errorHandler?(error)
 			}
