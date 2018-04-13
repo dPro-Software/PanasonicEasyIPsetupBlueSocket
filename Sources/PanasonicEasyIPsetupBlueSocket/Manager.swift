@@ -10,7 +10,7 @@ public class Manager {
 	let socket: Socket
 	
 	private var shouldPoll = true
-	public private (set) var configurations = Set<CameraConfiguration>()
+	private var cameras = [Int:CameraConfiguration]()
 	
 	public var discoveryHandler: ((CameraConfiguration)->Void)?
 	public var errorHandler: ((Error)->Void)?
@@ -23,8 +23,12 @@ public class Manager {
 		try search()
 	}
 	
+	public var configurations: Dictionary<Int, CameraConfiguration>.Values {
+		return cameras.values
+	}
+	
 	public func search() throws {
-		configurations.removeAll(keepingCapacity: true)
+		cameras.removeAll(keepingCapacity: true)
 		let addresses = Interface
 			.allInterfaces()
 			.filter {$0.family == .ipv4 && $0.broadcastAddress != nil}
@@ -55,8 +59,12 @@ public class Manager {
 	}
 	
 	private func notify(configuration: CameraConfiguration) {
-		if configurations.insert(configuration).inserted, let handler = discoveryHandler {
-			handler(configuration)
+		let key = configuration.hashValue
+		if !cameras.keys.contains(key) {
+			cameras[key] = configuration
+			discoveryHandler?(configuration)
+		} else if cameras[key] != configuration {
+			// Todo notify handler that a camera has changed its configuration.
 		}
 	}
 	
